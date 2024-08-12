@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}
+View Resumes
+{% endblock %}
+
+{% block content %}
+<h2>Resumes for Job</h2>
+
+{% if resumes %}
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <!-- Customize these columns based on the actual structure of your Excel file -->
+                
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Skills</th>
+                <th>Experience</th>
+                <th>years of Experience</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for resume in resumes %}
+                <tr>
+                    
+                    <td>{{ resume['Email'] }}</td>
+                    <td>{{ resume['Phone'] }}</td>
+                    <td>{{ resume['Skills'] }}</td>
+                    <td>{{ resume['Experience'] }}</td>
+                    <td>{{ resume['years of Experience'] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No resumes submitted for this job yet.</p>
+{% endif %}
+
+<a href="{{ url_for('welcome') }}" class="btn btn-primary">Back to Dashboard</a>
+{% endblock %}

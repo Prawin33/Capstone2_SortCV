@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Welcome{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        /* Add CSS directly here or in an external CSS file */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        nav {
+            background-color: #333;
+            overflow: hidden;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li {
+            display: inline;
+            padding: 14px 20px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+        }
+        nav ul li a:hover {
+            background-color: #575757;
+        }
+        .content {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header style="text-align: center; padding: 20px;">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" style="max-height: 100px;">
+    </header>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('welcome') }}">Home</a></li>
+            <li><a href="{{ url_for('job_search') }}">Job Search</a></li>
+            <li><a href="{{ url_for('Add_job') }}">Post a Job</a></li>
+            <li><a href="{{ url_for('logout') }}">Logout</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        {% block content %}
+        <!-- Page-specific content will be injected here -->
+        {% endblock %}
+    </div>
+</body>
+</html>

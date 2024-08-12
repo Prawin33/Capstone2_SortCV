@@ -1,0 +1,61 @@
+{% extends 'employer_base.html' %}
+
+    {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+    <style>
+        .job-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+        .job-details {
+            flex-grow: 1;
+        }
+        .job-actions {
+            text-align: right;
+            margin-left: 20px;
+        }
+    </style>
+<head>
+   <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    
+    <div class="container mt-5">
+        <h2>Welcome, {{ username }}!</h2>
+        <p>This is your dashboard.</p>
+        <h3>Jobs You've Posted:</h3>
+
+{% if jobs %}
+    <ul>
+    {% for job in jobs %}
+        <li class="job-item col-md-6">
+            <h4>{{ job.title }}</h4>
+            <p><strong>Description:</strong> {{ job.description }}</p>
+            <p><strong>Skills Required:</strong> {{ job.skills | join(', ') }}</p>
+            <p><strong>Contact Email:</strong> {{ job.email }}</p>
+
+            <div class="job-actions">
+            <a href="{{ url_for('viewResume') }}" class="btn btn-info">View Resumes</a>
+            </div>
+        </li>
+        <hr>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>You haven't posted any jobs yet.</p>
+{% endif %}
+        <a href="{{ url_for('logout') }}" class="btn btn-danger">Logout</a>
+    </div>
+</body>
+</html>
+
+{% endblock %}

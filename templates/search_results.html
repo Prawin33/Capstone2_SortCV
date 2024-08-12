@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Search Results for "{{ search_query }}"</h1>
+            <a href="{{ url_for('welcome') }}">Back to Home</a>
+        </header>
+        
+        <section class="search-results">
+            <h2>Jobs Found</h2>
+            {% if jobs %}
+                <ul>
+                    {% for job in jobs %}
+                        <li>
+                            
+                            <h3>{{ job.title }}</h3>
+                            <p>{{ job.description }}</p>
+                            <h4>Skills Required:</h4>
+                            <ul>
+                                {% for skill in job.skills %}
+                                    <li>{{ skill.strip() }}</li>
+                                {% endfor %}
+                            </ul>
+                            <p>Contact Email: <a href="mailto:{{ job.email }}">{{ job.email }}</a></p>
+                        </li>
+
+                         <a href="{{ url_for('upload_resume') }}">Upload Resume</a>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No jobs found matching your search criteria.</p>
+            {% endif %}
+        </section>
+    </div>
+</body>
+</html>

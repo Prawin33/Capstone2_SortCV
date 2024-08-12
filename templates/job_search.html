@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}
+Job Search
+{% endblock %}
+
+{% block content %}
+<h2>Job Search</h2>
+
+<form action="{{ url_for('search_jobs') }}" method="POST">
+    <div class="form-group">
+        <label for="searchQuery">Search for jobs:</label>
+        <input type="text" id="searchQuery" name="searchQuery" class="form-control" placeholder="Enter job title, description, or skills" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
+{% if not jobs %}
+    <h3>Featured Jobs:</h3>
+    <ul>
+        {% for job in jobs %}
+        <li>
+            <h4>{{ job.title }}</h4>
+            <p><strong>Company:</strong> {{ job.company }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+{% endif %}
+{% endblock %}

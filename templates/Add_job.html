@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post a Job</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Post a New Job</h2>
+        <form action="{{ url_for('post_job') }}" method="POST">
+            <div class="form-group">
+                <label for="jobTitle">Job Title:</label>
+                <input type="text" class="form-control" id="jobTitle" name="jobTitle" required>
+            </div>
+            <div class="form-group">
+                <label for="jobDescription">Job Description:</label>
+                <textarea class="form-control" id="jobDescription" name="jobDescription" rows="5" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="skills">Skills Required (comma-separated):</label>
+                <input type="text" class="form-control" id="skills" name="skills" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Contact Email:</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Post Job</button>
+        </form>
+    </div>
+</body>
+</html>
