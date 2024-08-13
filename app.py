@@ -134,7 +134,7 @@ def search_jobs():
 @app.route('/sortResume')
 def sortResume():
     # Read the Excel file
-    excel_data_df = pd.read_excel(r'C:\Users\Prave\Downloads\Capstone2\SortedResumes.xlsx')
+    excel_data_df = pd.read_excel('SortedResumes.xlsx')
 
     # Convert the dataframe to a dictionary to pass to the template
     data = excel_data_df.to_dict(orient='records')
@@ -144,7 +144,7 @@ def sortResume():
 @app.route('/viewResume')
 def viewResume():
     # Read the Excel file
-    excel_data_df = pd.read_excel(r'C:\Users\Prave\Downloads\Capstone2\resume.xlsx')
+    excel_data_df = pd.read_excel('resume.xlsx')
 
     # Convert the dataframe to a dictionary to pass to the template
     resumes = excel_data_df.to_dict(orient='records')
