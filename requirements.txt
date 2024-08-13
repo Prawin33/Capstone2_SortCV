@@ -2,3 +2,4 @@ docx2txt
 Flask
 python-docx
 gunicorn
+flask_sqlalchemy
