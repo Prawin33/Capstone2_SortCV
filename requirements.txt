@@ -1,0 +1,4 @@
+docx2txt
+Flask
+python-docx
+gunicorn
