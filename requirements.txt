@@ -3,3 +3,4 @@ Flask
 python-docx
 gunicorn
 flask_sqlalchemy
+pandas
